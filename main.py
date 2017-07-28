@@ -23,7 +23,8 @@ def get_timestamp(offset = 0):
 
 def get_cookie():
     # TODO: get the cookie
-    return "STAAAAAAAAAAY FRESH"
+    f = open("cookies", "r")
+    return f.read()
 
 def send_request(offset = 0):
     # Request
@@ -74,7 +75,7 @@ def process_data(pData, pType = "weapon"):
     return final
 
 if __name__ == "__main__":
-    f = open("SplatNetData_wp", "w")
+    f = open("SplatNetData_wp_" + "{:02d}{:02d}".format(datetime.datetime.utcnow().month, datetime.datetime.utcnow().day), "w")
     all_data = []
     for i in range(12):
         lg_data = parse_response(send_request(i))
