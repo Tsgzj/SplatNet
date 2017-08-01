@@ -55,6 +55,7 @@ def parse_response(rData):
             member['weapon'] = m['weapon']['name']
             member['special'] = m['weapon']['special']['name']
             member['sub'] = m['weapon']['sub']['name']
+            member['group'] = t['tag_id']
             ranking.append(member)
     return ranking
 
@@ -75,7 +76,7 @@ def process_data(pData, pType = "weapon"):
     return final
 
 if __name__ == "__main__":
-    f = open("SplatNetData_wp_" + "{:02d}{:02d}".format(datetime.datetime.utcnow().month, datetime.datetime.utcnow().day), "w")
+    f = open("./Data/SplatNetData_wp_" + "{:02d}{:02d}".format(datetime.datetime.utcnow().month, datetime.datetime.utcnow().day), "w")
     all_data = []
     for i in range(12):
         lg_data = parse_response(send_request(i))
